@@ -1,5 +1,5 @@
 <section class="py-5">
-  <div class="d-flex align-items-center mb-3">
+  <div class="d-flex align-items-center gap-3 mb-3">
     <h1>{{store_name}}</h1>
     <img class="rounded-circle" [src]="store_logo" alt="">
   </div>
@@ -7,9 +7,10 @@
     <select #category_select title="products categories">
       <option *ngFor="let product of products" value={{product.category}}>{{product.category}}</option>
     </select>
-    <input type="text" [value]="client_name" placeholder="Client Name">
+    <input #client_name_input type="text" [value]="client_name" placeholder="Client Name">
     <button class="btn btn-primary rounded-0">Submit</button>
   </div>
+  <p>{{client_name_input.value}}</p>
   <table class="table">
     <thead>
       <tr>

@@ -9,15 +9,15 @@ import { iProduct } from '../Models/iproduct';
 })
 export class ProductComponent implements OnInit {
   store_name: string;
-  store_logo:string;
-  client_name:string="";
+  store_logo: string;
+  client_name: string = "test";
   products: iProduct[];
   constructor() {
-    this.store_name='S-Mart';
-    this.store_logo='https://s3.amazonaws.com/thumbnails.venngage.com/template/fc8535df-be09-4c80-8ea5-a69a34b2318e.png';
+    this.store_name = 'S-Mart';
+    this.store_logo = 'https://s3.amazonaws.com/thumbnails.venngage.com/template/fc8535df-be09-4c80-8ea5-a69a34b2318e.png';
     this.products = [
       {
-        id: 1, 
+        id: 1,
         category: "Electronics",
         name: "iPhone 14",
         description: "The latest iPhone with A15 chip",
@@ -26,7 +26,7 @@ export class ProductComponent implements OnInit {
       },
       {
         id: 2,
-        category: "Appliances", 
+        category: "Appliances",
         name: "Samsung Washing Machine",
         description: "5kg fully automatic washing machine",
         price: 500,
@@ -36,22 +36,22 @@ export class ProductComponent implements OnInit {
         id: 3,
         category: "Books",
         name: "Atomic Habits",
-        description: "Book by James Clear on how to build good habits", 
+        description: "Book by James Clear on how to build good habits",
         price: 20,
         image: "https://images-eu.ssl-images-amazon.com/images/I/81bGKUa1e0L._AC_UL600_SR600,600_.jpg"
       },
       {
         id: 4,
-        category: "Home",  
+        category: "Home",
         name: "Alexa Echo Dot",
         description: "Hands-free smart speaker with Alexa",
-        price: 50, 
+        price: 50,
         image: "https://m.media-amazon.com/images/I/81OeuPUyBBL.__AC_SX300_SY300_QL70_ML2_.jpg"
       },
       {
         id: 5,
         category: "Toys",
-        name: "LEGO Star Wars X-Wing Fighter", 
+        name: "LEGO Star Wars X-Wing Fighter",
         description: "Iconic LEGO Star Wars toy with opening wings",
         price: 60,
         image: "https://m.media-amazon.com/images/I/81xCK66iBnL.jpg"

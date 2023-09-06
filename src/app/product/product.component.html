@@ -1,0 +1,35 @@
+<section class="py-5">
+  <div class="d-flex align-items-center mb-3">
+    <h1>{{store_name}}</h1>
+    <img class="rounded-circle" [src]="store_logo" alt="">
+  </div>
+  <div class="row row-cols-3 mb-3">
+    <select #category_select title="products categories">
+      <option *ngFor="let product of products" value={{product.category}}>{{product.category}}</option>
+    </select>
+    <input type="text" [value]="client_name" placeholder="Client Name">
+    <button class="btn btn-primary rounded-0">Submit</button>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Poduct Name</th>
+        <th scope="col">Poduct Image</th>
+        <th scope="col">Product Description</th>
+        <th scope="col">Product Price</th>
+        <th scope="col">Product Category</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+
+        <th scope="row">{{product.name}}</th>
+        <td><img class="rounded-3 shadow w-75" [src]="product.image" alt="{{product.name}}"></td>
+        <td>{{product.description}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.category}}</td>
+        <td><button class="btn btn-primary">+Cart</button></td>
+      </tr>
+    </tbody>
+  </table>

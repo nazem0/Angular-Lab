@@ -3,12 +3,12 @@
     <h1>{{store_name}}</h1>
     <img class="rounded-circle" [src]="store_logo" alt="">
   </div>
-  <div class="row row-cols-3 mb-3">
+  <div class="row row-cols-2 mb-3">
     <select #category_select title="products categories">
       <option *ngFor="let product of products" value={{product.category}}>{{product.category}}</option>
     </select>
-    <input #client_name_input type="text" [value]="client_name" placeholder="Client Name">
-    <button class="btn btn-primary rounded-0">Submit</button>
+    <input #client_name_input type="text" [value]="client_name" placeholder="Client Name" (change)="client_name_read(client_name_input.value)">
+    <!-- <button class="btn btn-primary rounded-0" (click)="client_name_read(client_name_input.value)">Submit</button> -->
   </div>
   <p>{{client_name_input.value}}</p>
   <table class="table">

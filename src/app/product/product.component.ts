@@ -10,7 +10,7 @@ import { iProduct } from '../Models/iproduct';
 export class ProductComponent implements OnInit {
   store_name: string;
   store_logo: string;
-  client_name: string = "test";
+  client_name: string = "client_name";
   products: iProduct[];
   constructor() {
     this.store_name = 'S-Mart';
@@ -68,5 +68,10 @@ export class ProductComponent implements OnInit {
   };
   ngOnInit() {
 
+  }
+
+  client_name_read(_client_name:string)
+  {
+    this.client_name = _client_name;
   }
 }

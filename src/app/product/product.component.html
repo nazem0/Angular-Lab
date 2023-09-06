@@ -1,7 +1,7 @@
 <section class="py-5">
   <div class="d-flex align-items-center gap-3 mb-3">
+    <img class="rounded-circle shadow-sm" [src]="store_logo" alt="">
     <h1>{{store_name}}</h1>
-    <img class="rounded-circle" [src]="store_logo" alt="">
   </div>
   <div class="row row-cols-2 mb-3">
     <select [(ngModel)]="selected_category" title="products categories">
@@ -15,24 +15,24 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">Poduct Name</th>
-        <th scope="col">Poduct Image</th>
-        <th scope="col">Product Description</th>
-        <th scope="col">Product Price</th>
-        <th scope="col">Product Category</th>
-        <th scope="col">Action</th>
+        <th class="text-center" scope="col">Poduct Name</th>
+        <th class="text-center" scope="col">Poduct Image</th>
+        <th class="text-center" scope="col">Product Description</th>
+        <th class="text-center" scope="col">Product Price</th>
+        <th class="text-center" scope="col">Product Category</th>
+        <th class="text-center" scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
       <!-- Have to Assign Index to Variable, Can't Be Used Directly -->
       <tr *ngFor="let product of products;let i = index" [class.d-none]="product.category!=selected_category && selected_category != '' ">
 
-        <th scope="row">{{i+1}}</th>
-        <td><img class="rounded-3 shadow w-75" [src]="product.image" alt="{{product.name}}"></td>
-        <td>{{product.description}}</td>
-        <td>{{product.price}}</td>
-        <td>{{product.category}}</td>
-        <td><button class="btn btn-primary">+Cart</button></td>
+        <th class="text-center" scope="row">{{i+1}}</th>
+        <td><img class="rounded-3 shadow w-75 my-auto" [src]="product.image" alt="{{product.name}}"></td>
+        <td class="text-center">{{product.description}}</td>
+        <td class="text-center">{{product.price}}</td>
+        <td class="text-center">{{product.category}}</td>
+        <td class="text-center"><button class="btn btn-primary">+Cart</button></td>
       </tr>
     </tbody>
   </table>

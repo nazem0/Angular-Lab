@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { FooterComponent } from './footer/footer.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { ProductComponent } from './product/product.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ProductComponent } from './components/product/product.component';
+import { LightBoxDirective } from './directives/light-box.directive';
+import { USDtoEGPPipe } from './pipes/usdto-egp.pipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { ProductComponent } from './product/product.component';
     ProductComponent,
     FooterComponent,
     SidebarComponent,
-    ProductComponent
+    ProductComponent,
+    LightBoxDirective,
+    USDtoEGPPipe
   ],
   imports: [
     BrowserModule,

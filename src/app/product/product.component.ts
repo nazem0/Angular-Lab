@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { iProduct } from '../Models/iproduct';
+import { ICategory } from '../Models/icategory';
 
 
 @Component({
@@ -10,11 +11,36 @@ import { iProduct } from '../Models/iproduct';
 export class ProductComponent implements OnInit {
   store_name: string;
   store_logo: string;
-  client_name: string = "client_name";
+  client_name: string = "";
+  categories: ICategory[];
+  selected_category: string="";
   products: iProduct[];
   constructor() {
     this.store_name = 'S-Mart';
     this.store_logo = 'https://s3.amazonaws.com/thumbnails.venngage.com/template/fc8535df-be09-4c80-8ea5-a69a34b2318e.png';
+    this.categories = [
+      {
+        id: 1,
+        name: 'Electronics'
+      },
+      {
+        id: 2,
+        name: 'Appliances'
+      },
+      {
+        id: 3,
+        name: 'Books'
+      },
+      {
+        id: 4,
+        name: 'Home'
+      },
+      {
+        id: 5,
+        name: 'Toys'
+      },
+
+    ]
     this.products = [
       {
         id: 1,
@@ -70,8 +96,7 @@ export class ProductComponent implements OnInit {
 
   }
 
-  client_name_read(_client_name:string)
-  {
+  client_name_read(_client_name: string) {
     this.client_name = _client_name;
   }
 }

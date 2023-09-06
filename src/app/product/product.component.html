@@ -15,6 +15,7 @@
   <table class="table">
     <thead>
       <tr>
+        <th class="text-center" scope="col">Poduct Number</th>
         <th class="text-center" scope="col">Poduct Name</th>
         <th class="text-center" scope="col">Poduct Image</th>
         <th class="text-center" scope="col">Product Description</th>
@@ -28,7 +29,8 @@
       <tr *ngFor="let product of products;let i = index" [class.d-none]="product.category!=selected_category && selected_category != '' ">
 
         <th class="text-center" scope="row">{{i+1}}</th>
-        <td><img class="rounded-3 shadow w-75 my-auto" [src]="product.image" alt="{{product.name}}"></td>
+        <td class="text-center">{{product.name}}</td>
+        <td class="d-flex justify-content-center"><img class="rounded-3 shadow w-75" [src]="product.image" alt="{{product.name}}"></td>
         <td class="text-center">{{product.description}}</td>
         <td class="text-center">{{product.price}}</td>
         <td class="text-center">{{product.category}}</td>

@@ -1,1 +1,14 @@
-<p>order-master works!</p>
+<div class="my-3">
+    <select class="w-100" [(ngModel)]="selected_category" title="products categories">
+        <option value="">Show All</option>
+        <option *ngFor="let category of categories" value={{category.name}}>{{category.name}}</option>
+    </select>
+</div>
+
+<hr>
+
+<app-product [sent_selected_category]="selected_category" (on_change_order_total_price)="read_order_total_price($event)"></app-product>
+
+<hr>
+
+<h3>Order Total Price:{{order_total_price | currency}}</h3>

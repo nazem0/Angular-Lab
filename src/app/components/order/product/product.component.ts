@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { EventEmitter,Input,Component, OnInit, OnChanges, Output } from '@angular/core';
 import { iProduct } from '../../Models/iproduct';
-import { ICategory } from '../../Models/icategory';
 
 
 @Component({
@@ -8,41 +7,27 @@ import { ICategory } from '../../Models/icategory';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
-export class ProductComponent implements OnInit {
+export class ProductComponent implements OnInit, OnChanges {
+  ngOnInit() {}
+  
+  ngOnChanges():void{
+    this.filterCategoryByID();
+  }
+
   date:Date=new Date();
   store_name: string;
   store_logo: string;
   client_name: string = "";
-  categories: ICategory[];
-  selected_category: string="";
+  @Input() sent_selected_category: string="";
+  order_total_price: number = 0;
+  @Output() on_change_order_total_price:EventEmitter<number>;
   products: iProduct[];
   filtered_products_by_category:iProduct[];
   constructor() {
+    this.on_change_order_total_price=new EventEmitter();
     this.store_name = 'S-Mart';
     this.store_logo = 'https://s3.amazonaws.com/thumbnails.venngage.com/template/fc8535df-be09-4c80-8ea5-a69a34b2318e.png';
-    this.categories = [
-      {
-        id: 1,
-        name: 'Electronics'
-      },
-      {
-        id: 2,
-        name: 'Appliances'
-      },
-      {
-        id: 3,
-        name: 'Books'
-      },
-      {
-        id: 4,
-        name: 'Home'
-      },
-      {
-        id: 5,
-        name: 'Toys'
-      },
-
-    ]
+    
     this.products = [
       {
         id: 1,
@@ -103,21 +88,25 @@ export class ProductComponent implements OnInit {
     ]
     this.filtered_products_by_category=this.products
   };
-  ngOnInit() {
 
+
+  buy(price:number)
+  {
+    this.on_change_order_total_price.emit(price);
   }
   filterCategoryByID()
   {
-    if(this.selected_category=="")
+    if(this.sent_selected_category=="")
     {
       this.filtered_products_by_category=this.products
     }
     else
     {
-      this.filtered_products_by_category=this.products.filter(product => product.category.toLowerCase() === this.selected_category.toLowerCase())
+      this.filtered_products_by_category=this.products.filter(product => product.category.toLowerCase() === this.sent_selected_category.toLowerCase())
     }
   }
   client_name_read(_client_name: string) {
     this.client_name = _client_name;
   }
+  
 }

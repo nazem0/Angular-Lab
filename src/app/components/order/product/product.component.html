@@ -1,20 +1,20 @@
-<section class="py-5">
-  <div class="row row-cols-2 align-items-center gx-2 mb-3">
+<section>
+  <!-- <div class="row row-cols-2 align-items-center gx-2 mb-3">
     <div>
       <img class="rounded-circle shadow-sm" [src]="store_logo" alt="">
 
       <h1>{{store_name}}</h1>
     </div>
     <h3>{{date | date :'short' : 'ar'}}</h3>
-  </div>
-  <div class="row row-cols-2 mb-3">
+  </div> -->
+  <!-- <div class="row row-cols-2 mb-3">
     <select [(ngModel)]="selected_category" title="products categories" (change)="filterCategoryByID()">
-      <option value="">Show All</option>
-      <option *ngFor="let category of categories" value={{category.name}}>{{category.name}}</option>
-    </select>
-    <input type="text" [(ngModel)]="client_name" [value]="client_name" placeholder="Client Name">
-    <!-- <button class="btn btn-primary rounded-0" (click)="client_name_read(client_name_input.value)">Submit</button> -->
-  </div>
+    <option value="">Show All</option>
+    <option *ngFor="let category of categories" value={{category.name}}>{{category.name}}</option>
+  </select>
+  </div> -->
+  <!-- <button class="btn btn-primary rounded-0" (click)="client_name_read(client_name_input.value)">Submit</button> -->
+  <!-- <input type="text" [(ngModel)]="client_name" [value]="client_name" placeholder="Client Name"> -->
   <p>{{client_name}}</p>
   <table class="table">
     <thead>
@@ -53,8 +53,9 @@
           <td class="text-center">{{product.price| currency}}</td>
           <td class="text-center">{{product.price|USDtoEGP| currency : 'EGP'}}</td>
           <td class="text-center">{{product.category}}</td>
-          <td class="text-center"><button class="btn btn-primary">+Cart</button></td>
+          <td class="text-center"><button class="btn btn-primary" (click)="buy(product.price)">+Cart</button></td>
         </tr>
       </ng-container>
     </tbody>
   </table>
+

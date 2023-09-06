@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { iProduct } from '../Models/iproduct';
-import { ICategory } from '../Models/icategory';
+import { iProduct } from '../../Models/iproduct';
+import { ICategory } from '../../Models/icategory';
 
 
 @Component({
@@ -16,6 +16,7 @@ export class ProductComponent implements OnInit {
   categories: ICategory[];
   selected_category: string="";
   products: iProduct[];
+  filtered_products_by_category:iProduct[];
   constructor() {
     this.store_name = 'S-Mart';
     this.store_logo = 'https://s3.amazonaws.com/thumbnails.venngage.com/template/fc8535df-be09-4c80-8ea5-a69a34b2318e.png';
@@ -90,13 +91,32 @@ export class ProductComponent implements OnInit {
         description: "Lightweight mesh running shoes for men and women",
         price: 904123,
         image: "https://assets.adidas.com/images/w_940,f_auto,q_auto/d9344ddf55bd48fca576ad4400ddc5c5_9366/GY3094_01_standard.jpg"
+      },
+      {
+        id: 7,
+        category: "Testing",
+        name: "No Image",
+        description: "Testing No Image Product",
+        price: 100,
+        image: ""
       }
     ]
+    this.filtered_products_by_category=this.products
   };
   ngOnInit() {
 
   }
-
+  filterCategoryByID()
+  {
+    if(this.selected_category=="")
+    {
+      this.filtered_products_by_category=this.products
+    }
+    else
+    {
+      this.filtered_products_by_category=this.products.filter(product => product.category.toLowerCase() === this.selected_category.toLowerCase())
+    }
+  }
   client_name_read(_client_name: string) {
     this.client_name = _client_name;
   }

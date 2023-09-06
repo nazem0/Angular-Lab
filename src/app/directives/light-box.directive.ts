@@ -1,19 +1,24 @@
-import { Directive,ElementRef, HostListener } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, OnChanges } from '@angular/core';
 
 @Directive({
   selector: '[appLightBox]'
 })
-export class LightBoxDirective {
-// To use the element on member functions we have to declare it as class attribute
-  constructor(private elem : ElementRef) {
-    elem.nativeElement.classList.add('border','border-5')
+export class LightBoxDirective implements OnChanges {
+  // To use the element on member functions we have to declare it as class attribute
+  @Input() border_color: string ='blue';
+  @Input() original_border_color: string ='black';
+  constructor(private elem: ElementRef,) {
+    
   }
-  @HostListener('mouseover') onMouseOver()
-  {
-    this.elem.nativeElement.style="scale:1.2"
+  ngOnChanges(): void {
+    this.elem.nativeElement.style.border = `3px solid ${this.border_color}`
   }
-  @HostListener('mouseout') onMouseOut()
-  {
-    this.elem.nativeElement.style="scale:1"
+  @HostListener('mouseover') onMouseOver() {
+    this.elem.nativeElement.style.border = `3px solid ${this.original_border_color}`
+
   }
+  @HostListener('mouseout') onMouseOut() {
+    this.elem.nativeElement.style.border = `3px solid ${this.border_color}`
+  }
+
 }

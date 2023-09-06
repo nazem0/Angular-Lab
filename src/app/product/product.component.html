@@ -24,9 +24,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let product of products" [class.d-none]="product.category!=selected_category && selected_category != '' ">
+      <!-- Have to Assign Index to Variable, Can't Be Used Directly -->
+      <tr *ngFor="let product of products;let i = index" [class.d-none]="product.category!=selected_category && selected_category != '' ">
 
-        <th scope="row">{{product.name}}</th>
+        <th scope="row">{{i+1}}</th>
         <td><img class="rounded-3 shadow w-75" [src]="product.image" alt="{{product.name}}"></td>
         <td>{{product.description}}</td>
         <td>{{product.price}}</td>

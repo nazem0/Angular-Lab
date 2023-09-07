@@ -6,24 +6,25 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { ProductComponent } from './components/order/product/product.component';
+import { ProductListComponent } from './components/order/product-list/product-list.component';
 import { LightBoxDirective } from './directives/light-box.directive';
 import { USDtoEGPPipe } from './pipes/usdto-egp.pipe';
 import { DefaultPicturePipe } from './pipes/default-picture.pipe';
 import { OrderMasterComponent } from './components/order/order-master/order-master.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    ProductComponent,
+    ProductListComponent,
     FooterComponent,
     SidebarComponent,
-    ProductComponent,
     LightBoxDirective,
     USDtoEGPPipe,
     DefaultPicturePipe,
-    OrderMasterComponent
+    OrderMasterComponent,
+    NotfoundComponent,
   ],
   imports: [
     BrowserModule,

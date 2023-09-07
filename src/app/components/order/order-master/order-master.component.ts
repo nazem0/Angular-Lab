@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ICategory } from '../../Models/icategory';
+import { ICategory } from '../../../Models/icategory';
 
 @Component({
   selector: 'app-order-master',
@@ -7,7 +7,7 @@ import { ICategory } from '../../Models/icategory';
   styleUrls: ['./order-master.component.css']
 })
 export class OrderMasterComponent {
-  selected_category:string;
+  selected_category:number;
   order_total_price:number;
   categories: ICategory[];
   constructor() {
@@ -32,9 +32,16 @@ export class OrderMasterComponent {
         id: 5,
         name: 'Toys'
       },
-
+      {
+        id: 6,
+        name: 'Clothing'
+      },
+      {
+        id: 7,
+        name: 'Testing'
+      }
     ]
-    this.selected_category="";
+    this.selected_category=0;
     this.order_total_price=0;
   }
 

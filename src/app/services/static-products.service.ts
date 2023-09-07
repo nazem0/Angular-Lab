@@ -1,37 +1,20 @@
-import { EventEmitter,Input,Component, OnInit, OnChanges, Output } from '@angular/core';
-import { iProduct } from '../../Models/iproduct';
+import { Injectable } from '@angular/core';
+import { iProduct } from '../Models/iproduct';
+// Dependency Injection Design Pattern
 
-
-@Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+@Injectable({
+  providedIn: 'root'
 })
-export class ProductComponent implements OnInit, OnChanges {
-  ngOnInit() {}
-  
-  ngOnChanges():void{
-    this.filterCategoryByID();
-  }
-
-  date:Date=new Date();
-  store_name: string;
-  store_logo: string;
-  client_name: string = "";
-  @Input() sent_selected_category: string="";
-  order_total_price: number = 0;
-  @Output() on_change_order_total_price:EventEmitter<number>;
-  products: iProduct[];
-  filtered_products_by_category:iProduct[];
-  constructor() {
-    this.on_change_order_total_price=new EventEmitter();
-    this.store_name = 'S-Mart';
-    this.store_logo = 'https://s3.amazonaws.com/thumbnails.venngage.com/template/fc8535df-be09-4c80-8ea5-a69a34b2318e.png';
+export class StaticProductsService {
+  private products: iProduct[];
+  selected_category:number;
+  constructor() { 
     
+    this.selected_category=0;
     this.products = [
       {
         id: 1,
-        category: "Electronics",
+        category: 1,
         name: "iPhone 14",
         description: "The latest iPhone with A15 chip",
         price: 9941239,
@@ -39,7 +22,7 @@ export class ProductComponent implements OnInit, OnChanges {
       },
       {
         id: 2,
-        category: "Appliances",
+        category: 2,
         name: "Samsung Washing Machine",
         description: "5kg fully automatic washing machine",
         price: 5041230,
@@ -47,7 +30,7 @@ export class ProductComponent implements OnInit, OnChanges {
       },
       {
         id: 3,
-        category: "Books",
+        category: 3,
         name: "Atomic Habits",
         description: "Book by James Clear on how to build good habits",
         price: 241230,
@@ -55,7 +38,7 @@ export class ProductComponent implements OnInit, OnChanges {
       },
       {
         id: 4,
-        category: "Home",
+        category: 4,
         name: "Alexa Echo Dot",
         description: "Hands-free smart speaker with Alexa",
         price: 541230,
@@ -63,7 +46,7 @@ export class ProductComponent implements OnInit, OnChanges {
       },
       {
         id: 5,
-        category: "Toys",
+        category: 5,
         name: "LEGO Star Wars X-Wing Fighter",
         description: "Iconic LEGO Star Wars toy with opening wings",
         price: 641230,
@@ -71,7 +54,7 @@ export class ProductComponent implements OnInit, OnChanges {
       },
       {
         id: 6,
-        category: "Clothing",
+        category: 6,
         name: "Adidas Running Shoes",
         description: "Lightweight mesh running shoes for men and women",
         price: 904123,
@@ -79,34 +62,38 @@ export class ProductComponent implements OnInit, OnChanges {
       },
       {
         id: 7,
-        category: "Testing",
+        category: 7,
         name: "No Image",
         description: "Testing No Image Product",
         price: 100,
         image: ""
       }
     ]
-    this.filtered_products_by_category=this.products
-  };
 
-
-  buy(price:number)
-  {
-    this.on_change_order_total_price.emit(price);
   }
-  filterCategoryByID()
+  getAllProducts():iProduct[]
   {
-    if(this.sent_selected_category=="")
+    return this.products;
+  }
+  getProductsByCategory(categoryId:number) : iProduct[]
+  {
+    if(categoryId==0)
     {
-      this.filtered_products_by_category=this.products
+      return this.products
     }
     else
     {
-      this.filtered_products_by_category=this.products.filter(product => product.category.toLowerCase() === this.sent_selected_category.toLowerCase())
+      return this.products.filter(product => product.category == categoryId)
     }
   }
-  client_name_read(_client_name: string) {
-    this.client_name = _client_name;
+  getProductById(id:number):iProduct|null
+  {
+    let foundProduct=this.products.find(product => product.id == id)
+    if(foundProduct)
+    {
+      return foundProduct
+    }
+    else
+    return null;
   }
-  
 }

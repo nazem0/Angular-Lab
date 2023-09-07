@@ -86,7 +86,7 @@ export class StaticProductsService {
       return this.products.filter(product => product.category == categoryId)
     }
   }
-  getProductById(id:number):iProduct|null
+  getProductById(id:number|string|null):iProduct|null
   {
     let foundProduct=this.products.find(product => product.id == id)
     if(foundProduct)

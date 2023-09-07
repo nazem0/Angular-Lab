@@ -1,0 +1,10 @@
+<div class="card my-5 pt-4">
+    <img class="card-img-top" src="{{product.image| defaultPicture : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoRE9YCemb_38Bjuzv6AHSh5UvpaL4w6QCw4YvrwshLt6xXzYwg7AKUujSfTOXuKoe9z4&usqp=CAU'}}" alt="Title">
+    <div class="card-body">
+        <h4 class="card-title">{{product.name}}</h4>
+        <div class="card-text">
+            <p>{{product.description}}</p>
+            <p>{{product.price|currency}}</p>
+        </div>
+    </div>
+</div>

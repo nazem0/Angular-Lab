@@ -12,6 +12,10 @@ import { USDtoEGPPipe } from './pipes/usdto-egp.pipe';
 import { DefaultPicturePipe } from './pipes/default-picture.pipe';
 import { OrderMasterComponent } from './components/order/order-master/order-master.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { MainLayoutComponent } from './components/main-layout/main-layout.component';
+import { ProductComponent } from './components/product/product.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +29,10 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
     DefaultPicturePipe,
     OrderMasterComponent,
     NotfoundComponent,
+    RegisterComponent,
+    LoginComponent,
+    MainLayoutComponent,
+    ProductComponent,
   ],
   imports: [
     BrowserModule,

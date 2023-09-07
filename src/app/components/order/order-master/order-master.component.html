@@ -1,6 +1,6 @@
 <div class="my-3">
     <select class="w-100" [(ngModel)]="selected_category" title="products categories">
-        <option value="">Show All</option>
+        <option value="0" selected>Show All</option>
         <option *ngFor="let category of categories" value={{category.id}}>{{category.name}}</option>
     </select>
 </div>

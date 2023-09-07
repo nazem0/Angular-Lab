@@ -44,7 +44,7 @@
             <ng-template #elseblock class="text-center" scope="row">there</ng-template>
           </th>
         -->
-            <td class="text-center">{{product.name | uppercase }}</td>
+            <td class="text-center" [routerLink]="['/product',product.id]">{{product.name | uppercase }}</td>
             <td class="d-flex justify-content-center"><img appLightBox border_color="gray" original_border_color="darkblue"
                 class="rounded-3 shadow w-75"
                 [src]="product.image | defaultPicture : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoRE9YCemb_38Bjuzv6AHSh5UvpaL4w6QCw4YvrwshLt6xXzYwg7AKUujSfTOXuKoe9z4&usqp=CAU'"
